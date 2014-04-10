@@ -2,7 +2,6 @@
 #coding: utf-8
 
 require 'gmail' # for more info -> http://dcparker.github.com/ruby-gmail/
-require 'shellwords'
 
 Signal.trap(:INT){
   puts "logout Gmail ..."
@@ -48,9 +47,6 @@ mails = @gmail.inbox.emails(:all).each do |mail|
     text  += mail.text_part.decoded
   end
 
-  ##curl --data-urlencode "source=hello, world." IDOBATA_END
-  #post = text.gsub("\n", "").gsub("`", "").shellescape
-  #post = text.shellescape.gsub("\n", "").gsub("'", "")
   post = text.gsub("\n", "").gsub("'", "\"")
   puts post
   puts is_html_format
