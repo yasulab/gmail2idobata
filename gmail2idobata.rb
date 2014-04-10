@@ -28,7 +28,7 @@ IDOBATA_END  = ENV['IDOBATA_END']
 @gmail = Gmail.new(USERNAME, PASSWORD)
 
 #emailsの引数には:all,:read,:unreadがある.
-mails = @gmail.inbox.emails(:all).each do |mail|
+mails = @gmail.inbox.emails(:unread).each do |mail|
   text = ""
   is_html_format = false
 
