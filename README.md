@@ -2,7 +2,7 @@
 
 Search Gmail inbox and send [Idobata.io](https://idobata.io) whatever you want to notify.
 
-This repositoy, for example, searches inbox and send Qiita-related mails to Idobata.
+This repositoy, for example, searches inbox and send unread mails to Idobata.
 
 ## Related Repositories
 
