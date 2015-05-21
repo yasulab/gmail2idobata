@@ -6,9 +6,9 @@ This repositoy, for example, searches inbox and send unread mails to Idobata.
 
 ## Related Repositories
 
-1. [Weekly Report Bot](https://github.com/yasulab/weekly_report_bot)
-2. [Weekly Report Helper](https://github.com/yasulab/weekly_report_helper)
-3. [Weekly Report Sender](https://github.com/yasulab/weekly_report_sender)
+1. [Weekly Report Bot](https://github.com/yasslab/weekly_report_bot)
+2. [Weekly Report Helper](https://github.com/yasslab/weekly_report_helper)
+3. [Weekly Report Sender](https://github.com/yasslab/weekly_report_sender)
 
 ## License
 
