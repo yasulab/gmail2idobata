@@ -58,4 +58,7 @@ mails = @gmail.inbox.emails(:unread).each do |mail|
   end
 end
 
+puts "No unread mails found."
+puts ""
 @gmail.logout
+exit
