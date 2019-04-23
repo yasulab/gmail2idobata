@@ -2,6 +2,8 @@
 #coding: utf-8
 
 require 'gmail' # for more info -> http://dcparker.github.com/ruby-gmail/
+require 'pry'
+require 'kconv'
 
 Signal.trap(:INT){
   puts "logout Gmail ..."
@@ -36,15 +38,17 @@ mails = @gmail.inbox.emails(:unread).each do |mail|
   #text  += "<li>日付:   #{mail.date}</li>"
   #text  += "<li>送信者: #{mail.from.first.to_a.first}</li>"
   #text  += "<li>受信者: #{mail.to}</li>" # この情報はいらない？
+  text += "<b>#{mail.subject.toutf8}</b><br>"
 
   #件名、日付、From、To、本文処理
   if !mail.text_part && !mail.html_part
-    text  += mail.body.decoded.encode("UTF-8", mail.charset)
+    text += mail.body.decoded.encode('UTF-8', mail.charset)
   elsif mail.html_part
-    text  += mail.html_part.decoded
+    text += mail.html_part.decoded
     is_html_format = true
   elsif mail.text_part
-    text  += mail.text_part.decoded
+    text += mail.subject.encode('UTF-8', mail.charset)
+    text += mail.text_part.decoded
   end
 
   post = text.gsub("\n", "").gsub("'", "\"")
