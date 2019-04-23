@@ -47,7 +47,6 @@ mails = @gmail.inbox.emails(:unread).each do |mail|
     text += mail.html_part.decoded
     is_html_format = true
   elsif mail.text_part
-    text += mail.subject.encode('UTF-8', mail.charset)
     text += mail.text_part.decoded
   end
 
