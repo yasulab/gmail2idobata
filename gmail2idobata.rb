@@ -45,14 +45,19 @@ mails = @gmail.inbox.emails(:unread).each do |mail|
     text += "<b>#{mail.subject.toutf8}</b><br>"
   end
 
-  #件名、日付、From、To、本文処理
-  if !mail.text_part && !mail.html_part
-    text += mail.body.decoded.encode('UTF-8', mail.charset, invalid: :replace, undef: :replace)
-  elsif mail.html_part
-    text += mail.html_part.decoded
-    is_html_format = true
-  elsif mail.text_part
-    text += mail.text_part.decoded
+  begin
+    #件名、日付、From、To、本文処理
+    if !mail.text_part && !mail.html_part
+      text += mail.body.decoded.encode('UTF-8', mail.charset, invalid: :replace, undef: :replace)
+    elsif mail.html_part
+      text += mail.html_part.decoded
+      is_html_format = true
+    elsif mail.text_part
+      text += mail.text_part.decoded
+    end
+  rescue => e
+    # エンコーディングで例外が発生したら、それも通知する
+    text += e.message
   end
 
   post = text.gsub("\n", "").gsub("'", "\"")
